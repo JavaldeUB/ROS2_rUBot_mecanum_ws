@@ -87,7 +87,7 @@ class TwistLidarStop(Node):
             angle_lidar_deg = angle_min_deg + i * angle_increment_deg
 
             # Lidar is mounted with 180° shift, adapt to robot frame
-            angle_robot_deg = angle_lidar_deg + 180.0
+            angle_robot_deg = angle_lidar_deg #+ 180.0
             if angle_robot_deg > 180.0:
                 angle_robot_deg -= 360.0
 

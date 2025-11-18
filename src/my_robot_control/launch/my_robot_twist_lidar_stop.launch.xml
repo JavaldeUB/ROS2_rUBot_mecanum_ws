@@ -10,8 +10,8 @@
     <!-- Node -->
     <node
         pkg="my_robot_control"
-        exec="twist_lidar_stop_exec"
-        name="twist_lidar_stop"
+        exec="my_robot_twist_lidar_stop_exec"
+        name="my_robot_wist_lidar_stop"
         output="screen">
 
         <!-- Load parameters -->
