@@ -1,0 +1,26 @@
+<launch>
+    <!-- Parameters -->
+    <arg name="vx" default="0.3" />
+    <arg name="vy" default="0.0" />
+    <arg name="w" default="0.0" />
+
+    <arg name="stop_distance" default="0.3" />
+    <arg name="angle_window_deg" default="10.0" />
+
+    <!-- Node -->
+    <node
+        pkg="my_robot_control"
+        exec="twist_lidar_stop_exec"
+        name="twist_lidar_stop"
+        output="screen">
+
+        <!-- Load parameters -->
+        <param name="vx" value="$(var vx)" />
+        <param name="vy" value="$(var vy)" />
+        <param name="w" value="$(var w)" />
+
+        <param name="stop_distance" value="$(var stop_distance)" />
+        <param name="angle_window_deg" value="$(var angle_window_deg)" />
+
+    </node>
+</launch>
