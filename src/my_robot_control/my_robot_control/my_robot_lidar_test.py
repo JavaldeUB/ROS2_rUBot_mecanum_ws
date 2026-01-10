@@ -28,7 +28,7 @@ class LidarTest(Node):
         angle_increment_deg = scan.angle_increment * 180.0 / 3.14159
 
         # Indices for specific angles in rUBot (Lidar: -180deg to 180deg at 0.5deg/index)
-        index_0_deg = int((0 - angle_min_deg -180)/ angle_increment_deg)
+        index_0_deg = int((0 - angle_min_deg)/ angle_increment_deg)
         index_neg90_deg = int((-90 - angle_min_deg) / angle_increment_deg)
         index_pos90_deg = int((90 - angle_min_deg) / angle_increment_deg)
         dist_0_deg = scan.ranges[index_0_deg]
@@ -36,9 +36,16 @@ class LidarTest(Node):
         dist_pos90_deg = scan.ranges[index_pos90_deg]
 
         self.get_logger().info("---- LIDAR readings ----")
-        self.get_logger().info(f"Distance at 0°: {dist_0_deg:.2f} m" if dist_0_deg else "No valid reading at 0°")
+        self.get_logger().info(f"Number of scan points: {len(scan.ranges)}")
+        self.get_logger().info(f"Distance at 0º: {dist_0_deg:.2f} m" if dist_0_deg else "No valid reading at 0°")
         self.get_logger().info(f"Distance at -90°: {dist_neg90_deg:.2f} m" if dist_neg90_deg else "No valid reading at -90°")
         self.get_logger().info(f"Distance at +90°: {dist_pos90_deg:.2f} m" if dist_pos90_deg else "No valid reading at +90°")
+        self.get_logger().info(f"Distance at index 0: {scan.ranges[0]:.2f} m")
+        self.get_logger().info(f"Distance at index 100: {scan.ranges[100]:.2f} m")
+        self.get_logger().info(f"Distance at index 200: {scan.ranges[200]:.2f} m")
+        self.get_logger().info(f"Distance at index 400: {scan.ranges[400]:.2f} m")
+        self.get_logger().info(f"Distance at index 600: {scan.ranges[600]:.2f} m")
+        self.get_logger().info(f"Distance at index 700: {scan.ranges[700]:.2f} m")
 
         custom_range = []
         for i, distance in enumerate(scan.ranges):
